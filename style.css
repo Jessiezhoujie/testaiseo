@@ -1,26 +1,89 @@
-/*
- * Copyright 2020 The Chromium Authors
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
- */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+}
 
-/* TODO(aee): this file should probably be turned into a module that imports
- * 'ui/webui/resources/shared_vars_css.m.js'.
- */
-html {
-  --google-grey-850-rgb: 48, 49, 52;  /* #303134 */
-  --google-grey-850: rgb(var(--google-grey-850-rgb));
-  --google-red-50-rgb: 252, 232, 230;  /* #fce8e6 */
-  --google-red-50: rgb(var(--google-red-50-rgb));
-  --google-red-800-rgb: 179, 20, 18;  /* #b31412 */
-  --google-red-800: rgb(var(--google-red-800-rgb));
-  --ntp-focus-shadow: 0 0 0 2px var(--color-new-tab-page-focus-ring);
-  --ntp-module-first-element-top-padding: 4px;
-  --ntp-module-icon-size: 48px;
-  --ntp-module-item-border-radius: 4px;
-  --ntp-module-line-height: 20px;
-  --ntp-module-text-size: 13px;
-  --ntp-module-secondary-text-size: 11px;
-  --ntp-module-secondary-line-height: 16px;
-  --ntp-module-see-more-font-weight: 500;
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #0073e6;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Main Content Styles */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #0073e6;
+}
+
+section p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Form Styles */
+form {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+form input,
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form button {
+    background-color: #0073e6;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+form button:hover {
+    background-color: #005bb5;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
 }
