@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use our used mobile home value calculator to estimate the worth of your mobile home based on key factors such as age, condition, and location.">
-    <meta name="keywords" content="used mobile home value calculator, mobile home worth, mobile home value estimation">
-    <meta name="author" content="Your Website Name">
+    <meta name="description" content="A calculator to estimate the value of used mobile homes based on key factors like age, condition, location, and size.">
     <title>Used Mobile Home Value Calculator</title>
-    <!-- Link to external CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,46 +14,47 @@
 </header>
 
 <main>
-    <form id="value-calculator">
+    <form id="valueCalculator">
         <label for="age">Age of the Mobile Home (Years):</label>
-        <input type="number" id="age" name="age" placeholder="Enter age" required>
+        <input type="number" id="age" name="age" min="1" placeholder="Enter age" required>
         
         <label for="condition">Condition of the Mobile Home:</label>
         <select id="condition" name="condition">
-            <option value="excellent">Excellent</option>
-            <option value="good">Good</option>
-            <option value="fair">Fair</option>
-            <option value="poor">Poor</option>
+            <option value="1">Poor</option>
+            <option value="1.2">Fair</option>
+            <option value="1.5">Good</option>
+            <option value="2">Excellent</option>
         </select>
         
         <label for="location">Location of the Mobile Home:</label>
-        <input type="text" id="location" name="location" placeholder="Enter location" required>
+        <select id="location" name="location">
+            <option value="1">Low-Demand Area</option>
+            <option value="1.5">Moderate-Demand Area</option>
+            <option value="2">High-Demand Area</option>
+        </select>
         
         <label for="size">Size of the Mobile Home (Square Feet):</label>
-        <input type="number" id="size" name="size" placeholder="Enter size" required>
+        <input type="number" id="size" name="size" min="100" placeholder="Enter size" required>
         
-        <button type="submit">Calculate Value</button>
+        <label for="type">Type of Mobile Home:</label>
+        <select id="type" name="type">
+            <option value="1">Single-Wide</option>
+            <option value="1.5">Double-Wide</option>
+        </select>
+        
+        <button type="button" id="calculateBtn">Calculate Value</button>
     </form>
 
-    <section>
-        <h2>How Does the Calculator Work?</h2>
-        <p>The calculator evaluates the value of your mobile home by analyzing key factors such as age, condition, location, and size. It provides an estimated value that reflects current market conditions.</p>
-    </section>
-
-    <section>
-        <h2>Why Use Our Mobile Home Value Calculator?</h2>
-        <p>This tool offers a quick and reliable way to estimate your mobile home's worth without the need for professional appraisals, saving you time and effort.</p>
-    </section>
-
-    <section>
-        <h2>Factors That Impact Mobile Home Value</h2>
-        <p>The value of a mobile home is influenced by factors like age, condition, location, size, and market demand. Understanding these can help you make informed decisions.</p>
+    <section id="result">
+        <h2>Estimated Value</h2>
+        <p id="valueOutput">Enter the details above to calculate the estimated value of your mobile home.</p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2024 Your Website Name. All Rights Reserved.</p>
+    <p>&copy; 2024 Mobile Home Value Estimator. All Rights Reserved.</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
