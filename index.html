@@ -3,126 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Used Mobile Home Value Calculator: Calculate the value of your mobile home based on various factors including age, size, condition, manufacturer, location demand, and type.">
+    <meta name="description" content="Estimate the value of your used mobile home based on key factors such as location, age, condition, and more.">
     <title>Used Mobile Home Value Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Used Mobile Home Value Calculator</h1>
-            <p>Enter your mobile home details below to estimate its value based on multiple factors.</p>
-        </header>
 
-        <form id="valueCalculatorForm">
-            <!-- Age of Mobile Home -->
-            <div class="form-group">
-                <label for="age">Age of Home (in years):</label>
-                <input type="number" id="age" name="age" required>
-            </div>
+<div class="container">
+    <h1>Used Mobile Home Value Calculator</h1>
 
-            <!-- Size of Mobile Home -->
-            <div class="form-group">
-                <label for="size">Size of Home (in square feet):</label>
-                <input type="number" id="size" name="size" required>
-            </div>
+    <form id="calculator-form">
+        <!-- Age of Home -->
+        <div class="section">
+            <label for="home-age">Age of Home (in years)</label>
+            <input type="number" id="home-age" name="home-age" required min="1" max="100">
+            <p class="error-message" id="home-age-error"></p>
+        </div>
 
-            <!-- Condition of Home -->
-            <div class="form-group">
-                <label for="condition">Condition of Home:</label>
-                <select id="condition" name="condition" required>
-                    <option value="excellent">Excellent</option>
-                    <option value="good">Good</option>
-                    <option value="fair">Fair</option>
-                    <option value="poor">Poor</option>
-                </select>
-            </div>
+        <!-- Size of Home -->
+        <div class="section">
+            <label for="home-size">Size of Home (in square feet)</label>
+            <input type="number" id="home-size" name="home-size" required min="100" max="5000">
+            <p class="error-message" id="home-size-error"></p>
+        </div>
 
-            <!-- Number of Rooms -->
-            <div class="form-group">
-                <label for="rooms">Number of Rooms:</label>
-                <input type="number" id="rooms" name="rooms" required>
-            </div>
+        <!-- Condition of Home -->
+        <div class="section">
+            <label for="home-condition">Condition of Home</label>
+            <select id="home-condition" name="home-condition" required>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="poor">Poor</option>
+            </select>
+            <p class="error-message" id="home-condition-error"></p>
+        </div>
 
-            <!-- Manufacturer -->
-            <div class="form-group">
-                <label for="manufacturer">Manufacturer's Name:</label>
-                <select id="manufacturer" name="manufacturer" required>
-                    <optgroup label="Premium Manufacturers">
-                        <option value="Clayton Homes (Premium)">Clayton Homes (Premium)</option>
-                        <option value="Palm Harbor Homes (Premium)">Palm Harbor Homes (Premium)</option>
-                        <option value="Golden West Homes (Premium)">Golden West Homes (Premium)</option>
-                        <option value="Champion Homes (Premium)">Champion Homes (Premium)</option>
-                        <option value="Silvercrest Homes (Premium)">Silvercrest Homes (Premium)</option>
-                        <option value="Skyline Homes (Premium)">Skyline Homes (Premium)</option>
-                        <option value="Cavco Homes (Premium)">Cavco Homes (Premium)</option>
-                    </optgroup>
-                    <optgroup label="Standard Manufacturers">
-                        <option value="Fleetwood Homes (Standard)">Fleetwood Homes (Standard)</option>
-                        <option value="Adventure Homes (Standard)">Adventure Homes (Standard)</option>
-                        <option value="Fairmont Homes (Standard)">Fairmont Homes (Standard)</option>
-                        <option value="Sunshine Homes (Standard)">Sunshine Homes (Standard)</option>
-                        <option value="Nashua Homes (Standard)">Nashua Homes (Standard)</option>
-                        <option value="Redman Homes (Standard)">Redman Homes (Standard)</option>
-                        <option value="Oak Creek Homes (Standard)">Oak Creek Homes (Standard)</option>
-                    </optgroup>
-                    <optgroup label="Budget Manufacturers">
-                        <option value="Legacy Housing (Budget)">Legacy Housing (Budget)</option>
-                        <option value="TRU Homes (Budget)">TRU Homes (Budget)</option>
-                        <option value="Hamilton Homebuilders (Budget)">Hamilton Homebuilders (Budget)</option>
-                        <option value="Southern Energy Homes (Budget)">Southern Energy Homes (Budget)</option>
-                        <option value="Jessup Housing (Budget)">Jessup Housing (Budget)</option>
-                        <option value="Deer Valley Homes (Budget)">Deer Valley Homes (Budget)</option>
-                        <option value="Champion Homes Budget Series (Budget)">Champion Homes Budget Series (Budget)</option>
-                    </optgroup>
-                    <optgroup label="Regional or Specialty Manufacturers">
-                        <option value="Kit Custom Homebuilders (Regional)">Kit Custom Homebuilders (Regional)</option>
-                        <option value="Karsten Homes (Regional)">Karsten Homes (Regional)</option>
-                        <option value="Jacobsen Homes (Regional)">Jacobsen Homes (Regional)</option>
-                        <option value="Oakwood Homes (Regional)">Oakwood Homes (Regional)</option>
-                    </optgroup>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="otherManufacturer" name="otherManufacturer" placeholder="Enter other manufacturer" style="display: none;">
-            </div>
+        <!-- Number of Rooms -->
+        <div class="section">
+            <label for="num-rooms">Number of Rooms</label>
+            <input type="number" id="num-rooms" name="num-rooms" required min="1" max="10">
+            <p class="error-message" id="num-rooms-error"></p>
+        </div>
 
-            <!-- Location Demand Level -->
-            <div class="form-group">
-                <label for="locationDemand">Location Demand Level:</label>
-                <select id="locationDemand" name="locationDemand" required>
-                    <option value="high">High Demand</option>
-                    <option value="moderate">Moderate Demand</option>
-                    <option value="low">Low Demand</option>
-                </select>
-            </div>
+        <!-- Type of Mobile Home -->
+        <div class="section">
+            <label for="home-type">Home Type</label>
+            <select id="home-type" name="home-type" required>
+                <option value="single-wide">Single-Wide</option>
+                <option value="double-wide">Double-Wide</option>
+            </select>
+            <p class="error-message" id="home-type-error"></p>
+        </div>
 
-            <!-- Type of Mobile Home -->
-            <div class="form-group">
-                <label for="type">Type of Mobile Home:</label>
-                <select id="type" name="type" required>
-                    <option value="singleWide">Single-Wide</option>
-                    <option value="doubleWide">Double-Wide</option>
-                    <option value="tripleWide">Triple-Wide</option>
-                </select>
-            </div>
+        <!-- Location Demand Level -->
+        <div class="section">
+            <label for="location-demand">Location Demand Level</label>
+            <input type="number" id="location-demand" name="location-demand" required min="1" max="10">
+            <p class="error-message" id="location-demand-error"></p>
+        </div>
 
-            <button type="submit">Calculate Value</button>
-        </form>
+        <!-- Manufacturer Selection -->
+        <div class="section">
+            <label for="manufacturer">Manufacturer</label>
+            <select id="manufacturer" name="manufacturer" required>
+                <option value="other">Other (Please specify)</option>
+            </select>
+            <p class="error-message" id="manufacturer-error"></p>
+        </div>
 
-        <section class="explanation">
-            <h2>Explanation of Factors</h2>
-            <p><strong>Age of Home</strong>: The age of the mobile home affects its depreciation, with older homes generally being worth less.</p>
-            <p><strong>Size of Home</strong>: Larger homes tend to have higher values due to more living space.</p>
-            <p><strong>Condition of Home</strong>: Homes in excellent or good condition will have a higher value than those in fair or poor condition.</p>
-            <p><strong>Number of Rooms</strong>: More rooms can increase the value of the home, as it provides more space for living.</p>
-            <p><strong>Manufacturer</strong>: Certain manufacturers are known for higher-quality homes, which can influence resale value. Premium brands tend to have higher value, while budget brands are typically worth less.</p>
-            <p><strong>Location Demand Level</strong>: Mobile homes in areas with high demand generally have a higher value.</p>
-            <p><strong>Type of Mobile Home</strong>: A double-wide or triple-wide home typically has a higher value than a single-wide home due to increased space.</p>
-            <h2>Calculation Logic</h2>
-            <p>The value of a mobile home is estimated based on the above factors, including the home's age, size, condition, number of rooms, manufacturer, location demand, and type of home. These factors are weighted and combined to estimate the home's value.</p>
-        </section>
-    </div>
+        <div class="section">
+            <button type="button" id="calculate-btn">Calculate</button>
+        </div>
+    </form>
 
-    <script src="scripts.js"></script>
+    <div id="result" class="result"></div>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
