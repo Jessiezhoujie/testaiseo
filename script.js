@@ -26,7 +26,7 @@ function populateManufacturers(manufacturers) {
     });
 }
 
-// Calculation logic (same as before)
+// Calculation logic (adjusted for manufacturer classification)
 function calculateHomeValue() {
     let age = parseFloat(document.getElementById('age').value);
     let size = parseFloat(document.getElementById('size').value);
@@ -74,13 +74,40 @@ function calculateHomeValue() {
         baseValue *= 0.9;
     }
 
-    // Adjust for manufacturer
-    if (manufacturer === 'Clayton Homes') {
-        baseValue *= 1.4;
-    } else if (manufacturer === 'Palm Harbor Homes') {
-        baseValue *= 1.3;
+    // Adjust for manufacturer classification
+    let manufacturerClassification = getManufacturerClassification(manufacturer);
+    switch (manufacturerClassification) {
+        case 'Premium':
+            baseValue *= 1.4;
+            break;
+        case 'Standard':
+            baseValue *= 1.2;
+            break;
+        case 'Budget':
+            baseValue *= 0.8;
+            break;
+        case 'Regional/Specialty':
+            baseValue *= 1.1;
+            break;
+        default:
+            // If no valid classification is found, apply a default multiplier
+            baseValue *= 1;
     }
 
     // Display the result
     document.getElementById('result').textContent = `Estimated Home Value: $${baseValue.toFixed(2)}`;
+}
+
+// Function to get the manufacturer classification based on the selected manufacturer
+function getManufacturerClassification(manufacturerName) {
+    const manufacturers = {
+        "Clayton Homes": "Premium",
+        "Palm Harbor Homes": "Premium",
+        "Golden West Homes": "Premium",
+        "Fleetwood Homes": "Standard",
+        "Legacy Housing": "Budget",
+        "Other": "Regional/Specialty"
+    };
+
+    return manufacturers[manufacturerName] || "Standard"; // Default to "Standard" if not found
 }
