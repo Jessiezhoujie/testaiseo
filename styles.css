@@ -55,29 +55,4 @@ select {
     box-sizing: border-box;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-/* Explanation Styles */
-.explanation h2 {
-    color: #333;
-    font-size: 1.5em;
-}
-
-.explanation p {
-    font-size: 1em;
-    line-height: 1.6;
-}
+button
