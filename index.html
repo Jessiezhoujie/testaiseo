@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Used Mobile Home Value Calculator: Calculate the value of your mobile home based on various factors including age, size, condition, and manufacturer.">
+    <meta name="description" content="Used Mobile Home Value Calculator: Calculate the value of your mobile home based on various factors including age, size, condition, manufacturer, location demand, and type.">
     <title>Used Mobile Home Value Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,7 +11,7 @@
     <div class="container">
         <header>
             <h1>Used Mobile Home Value Calculator</h1>
-            <p>Enter your mobile home details below to estimate its value.</p>
+            <p>Enter your mobile home details below to estimate its value based on multiple factors.</p>
         </header>
 
         <form id="valueCalculatorForm">
@@ -86,6 +86,26 @@
                 <input type="text" id="otherManufacturer" name="otherManufacturer" placeholder="Enter other manufacturer" style="display: none;">
             </div>
 
+            <!-- Location Demand Level -->
+            <div class="form-group">
+                <label for="locationDemand">Location Demand Level:</label>
+                <select id="locationDemand" name="locationDemand" required>
+                    <option value="high">High Demand</option>
+                    <option value="moderate">Moderate Demand</option>
+                    <option value="low">Low Demand</option>
+                </select>
+            </div>
+
+            <!-- Type of Mobile Home -->
+            <div class="form-group">
+                <label for="type">Type of Mobile Home:</label>
+                <select id="type" name="type" required>
+                    <option value="singleWide">Single-Wide</option>
+                    <option value="doubleWide">Double-Wide</option>
+                    <option value="tripleWide">Triple-Wide</option>
+                </select>
+            </div>
+
             <button type="submit">Calculate Value</button>
         </form>
 
@@ -96,8 +116,10 @@
             <p><strong>Condition of Home</strong>: Homes in excellent or good condition will have a higher value than those in fair or poor condition.</p>
             <p><strong>Number of Rooms</strong>: More rooms can increase the value of the home, as it provides more space for living.</p>
             <p><strong>Manufacturer</strong>: Certain manufacturers are known for higher-quality homes, which can influence resale value. Premium brands tend to have higher value, while budget brands are typically worth less.</p>
+            <p><strong>Location Demand Level</strong>: Mobile homes in areas with high demand generally have a higher value.</p>
+            <p><strong>Type of Mobile Home</strong>: A double-wide or triple-wide home typically has a higher value than a single-wide home due to increased space.</p>
             <h2>Calculation Logic</h2>
-            <p>The value of a mobile home is estimated based on the above factors, including the home's age, size, condition, number of rooms, and the manufacturer's reputation. The final value is calculated by combining these factors, with weight adjustments based on each variable.</p>
+            <p>The value of a mobile home is estimated based on the above factors, including the home's age, size, condition, number of rooms, manufacturer, location demand, and type of home. These factors are weighted and combined to estimate the home's value.</p>
         </section>
     </div>
 
