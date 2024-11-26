@@ -3,66 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A calculator to estimate the value of used mobile homes based on key factors like age, condition, location, and size.">
+    <meta name="description" content="Calculate the value of your used mobile home with our easy-to-use calculator. Factors like age, condition, location, size, and manufacturer are included for accurate estimates.">
+    <meta name="keywords" content="used mobile home value calculator, mobile home value, mobile home price estimate">
+    <meta name="author" content="Your Name">
     <title>Used Mobile Home Value Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Used Mobile Home Value Calculator</h1>
+    </header>
+    <main>
+        <div class="calculator">
+            <form>
+                <div class="form-group">
+                    <label for="age">Age of the Mobile Home (in years):</label>
+                    <input type="number" id="age" name="age" placeholder="Enter the age in years" required>
+                </div>
+                <div class="form-group">
+                    <label for="condition">Condition of the Home:</label>
+                    <select id="condition" name="condition" required>
+                        <option value="1">Poor</option>
+                        <option value="1.2">Fair</option>
+                        <option value="1.5">Good</option>
+                        <option value="2">Excellent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location Demand Level:</label>
+                    <select id="location" name="location" required>
+                        <option value="1">Low Demand</option>
+                        <option value="1.5">Moderate Demand</option>
+                        <option value="2">High Demand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size of the Home (in sqft):</label>
+                    <input type="number" id="size" name="size" placeholder="Enter the size in square feet" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type of Mobile Home:</label>
+                    <select id="type" name="type" required>
+                        <option value="1">Single-Wide</option>
+                        <option value="1.5">Double-Wide</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rooms">Number of Rooms:</label>
+                    <input type="number" id="rooms" name="rooms" placeholder="Enter the number of rooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer's Name:</label>
+                    <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter the manufacturer name" required>
+                </div>
+                <button type="button" id="calculateBtn">Calculate Value</button>
+            </form>
+            <div id="valueOutput" class="output"></div>
+        </div>
 
-<header>
-    <h1>Used Mobile Home Value Calculator</h1>
-</header>
-
-<main>
-    <form id="valueCalculator">
-        <label for="age">Age of the Mobile Home (Years):</label>
-        <input type="number" id="age" name="age" min="1" placeholder="Enter age" required>
-        
-        <label for="condition">Condition of the Mobile Home:</label>
-        <select id="condition" name="condition">
-            <option value="1">Poor</option>
-            <option value="1.2">Fair</option>
-            <option value="1.5">Good</option>
-            <option value="2">Excellent</option>
-        </select>
-        
-        <label for="location">Location of the Mobile Home:</label>
-        <select id="location" name="location">
-            <option value="1">Low-Demand Area</option>
-            <option value="1.5">Moderate-Demand Area</option>
-            <option value="2">High-Demand Area</option>
-        </select>
-        
-        <label for="size">Size of the Mobile Home (Square Feet):</label>
-        <input type="number" id="size" name="size" min="100" placeholder="Enter size" required>
-        
-        <label for="type">Type of Mobile Home:</label>
-        <select id="type" name="type">
-            <option value="1">Single-Wide</option>
-            <option value="1.5">Double-Wide</option>
-        </select>
-        <div>
-    <label for="rooms">Number of Rooms:</label>
-    <input type="number" id="rooms" name="rooms" min="1" required>
-</div>
-<div>
-    <label for="manufacturer">Manufacturer's Name (premium/standard/budget):</label>
-    <input type="text" id="manufacturer" name="manufacturer" required>
-</div>
-        
-        <button type="button" id="calculateBtn">Calculate Value</button>
-    </form>
-
-    <section id="result">
-        <h2>Estimated Value</h2>
-        <p id="valueOutput">Enter the details above to calculate the estimated value of your mobile home.</p>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2024 Mobile Home Value Estimator. All Rights Reserved.</p>
-</footer>
-
-<script src="script.js"></script>
+        <div class="explanation">
+            <h2>How the Calculator Works</h2>
+            <p>This calculator estimates the value of a used mobile home by considering several important factors:</p>
+            <ul>
+                <li><strong>Age:</strong> Older homes depreciate over time, reducing their value.</li>
+                <li><strong>Condition:</strong> Homes in better condition hold higher value.</li>
+                <li><strong>Location:</strong> Demand in the location influences the price significantly.</li>
+                <li><strong>Size:</strong> Larger homes typically have higher values.</li>
+                <li><strong>Type:</strong> Double-wide homes are more valuable than single-wide homes.</li>
+                <li><strong>Number of Rooms:</strong> More rooms often mean greater value.</li>
+                <li><strong>Manufacturer:</strong> Homes from premium manufacturers retain higher resale value.</li>
+            </ul>
+            <p>The calculator applies depreciation and other market factors to provide an estimated value tailored to your input.</p>
+        </div>
+    </main>
+    <script>
+        // Insert the JavaScript logic provided earlier here
+    </script>
 </body>
 </html>
