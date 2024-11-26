@@ -54,7 +54,16 @@
                 </div>
                 <div class="form-group">
                     <label for="manufacturer">Manufacturer's Name:</label>
-                    <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter the manufacturer name" required>
+                    <select id="manufacturer" name="manufacturer" required>
+                        <option value="Champion Homes">Champion Homes</option>
+                        <option value="Clayton Homes">Clayton Homes</option>
+                        <option value="Fleetwood Homes">Fleetwood Homes</option>
+                        <option value="Palm Harbor Homes">Palm Harbor Homes</option>
+                        <option value="Silvercrest">Silvercrest</option>
+                        <option value="Skyline Homes">Skyline Homes</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="otherManufacturer" name="otherManufacturer" placeholder="Enter other manufacturer" style="display: none;">
                 </div>
                 <button type="button" id="calculateBtn">Calculate Value</button>
             </form>
@@ -76,8 +85,6 @@
             <p>The calculator applies depreciation and other market factors to provide an estimated value tailored to your input.</p>
         </div>
     </main>
-    <script>
-        // Insert the JavaScript logic provided earlier here
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
