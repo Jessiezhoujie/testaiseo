@@ -1,58 +1,132 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
 .container {
-    max-width: 800px;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
 }
 
-header h1 {
-    font-size: 2em;
-    color: #333;
+h1, h2 {
+    color: #2a3d66;
+    font-size: 24px;
     text-align: center;
 }
 
-header p {
-    text-align: center;
-    font-size: 1.1em;
-    margin-bottom: 20px;
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
 }
 
 /* Form Styles */
 form {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+form label {
+    display: block;
+    font-size: 18px;
+    margin: 10px 0 5px;
 }
 
-label {
-    font-weight: bold;
-}
-
-input[type="number"],
-input[type="text"],
-select {
+form input[type="number"], form select, form textarea {
     width: 100%;
-    max-width: 400px;
-    padding: 8px;
-    margin: 5px 0;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
     box-sizing: border-box;
 }
 
-button
+form select {
+    cursor: pointer;
+}
+
+form input[type="number"]:focus, form select:focus, form textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+form input[type="submit"] {
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #003d80;
+}
+
+/* Manufacturer's Other Input */
+#otherManufacturer {
+    display: none;
+    margin-bottom: 15px;
+}
+
+/* Instructions / Explanations */
+.instructions {
+    background-color: #eef7ff;
+    border-left: 5px solid #0056b3;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.instructions p {
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    h1, h2 {
+        font-size: 20px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    form input[type="number"], form select, form textarea {
+        font-size: 14px;
+    }
+
+    form input[type="submit"] {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
