@@ -3,88 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculate the value of your used mobile home with our easy-to-use calculator. Factors like age, condition, location, size, and manufacturer are included for accurate estimates.">
-    <meta name="keywords" content="used mobile home value calculator, mobile home value, mobile home price estimate">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="Used Mobile Home Value Calculator: Calculate the value of your mobile home based on various factors including age, size, condition, and manufacturer.">
     <title>Used Mobile Home Value Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Used Mobile Home Value Calculator</h1>
-    </header>
-    <main>
-        <div class="calculator">
-            <form>
-                <div class="form-group">
-                    <label for="age">Age of the Mobile Home (in years):</label>
-                    <input type="number" id="age" name="age" placeholder="Enter the age in years" required>
-                </div>
-                <div class="form-group">
-                    <label for="condition">Condition of the Home:</label>
-                    <select id="condition" name="condition" required>
-                        <option value="1">Poor</option>
-                        <option value="1.2">Fair</option>
-                        <option value="1.5">Good</option>
-                        <option value="2">Excellent</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="location">Location Demand Level:</label>
-                    <select id="location" name="location" required>
-                        <option value="1">Low Demand</option>
-                        <option value="1.5">Moderate Demand</option>
-                        <option value="2">High Demand</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="size">Size of the Home (in sqft):</label>
-                    <input type="number" id="size" name="size" placeholder="Enter the size in square feet" required>
-                </div>
-                <div class="form-group">
-                    <label for="type">Type of Mobile Home:</label>
-                    <select id="type" name="type" required>
-                        <option value="1">Single-Wide</option>
-                        <option value="1.5">Double-Wide</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="rooms">Number of Rooms:</label>
-                    <input type="number" id="rooms" name="rooms" placeholder="Enter the number of rooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="manufacturer">Manufacturer's Name:</label>
-                    <select id="manufacturer" name="manufacturer" required>
-                        <option value="Champion Homes">Champion Homes</option>
-                        <option value="Clayton Homes">Clayton Homes</option>
-                        <option value="Fleetwood Homes">Fleetwood Homes</option>
-                        <option value="Palm Harbor Homes">Palm Harbor Homes</option>
-                        <option value="Silvercrest">Silvercrest</option>
-                        <option value="Skyline Homes">Skyline Homes</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="text" id="otherManufacturer" name="otherManufacturer" placeholder="Enter other manufacturer" style="display: none;">
-                </div>
-                <button type="button" id="calculateBtn">Calculate Value</button>
-            </form>
-            <div id="valueOutput" class="output"></div>
-        </div>
+    <div class="container">
+        <header>
+            <h1>Used Mobile Home Value Calculator</h1>
+            <p>Enter your mobile home details below to estimate its value.</p>
+        </header>
 
-        <div class="explanation">
-            <h2>How the Calculator Works</h2>
-            <p>This calculator estimates the value of a used mobile home by considering several important factors:</p>
-            <ul>
-                <li><strong>Age:</strong> Older homes depreciate over time, reducing their value.</li>
-                <li><strong>Condition:</strong> Homes in better condition hold higher value.</li>
-                <li><strong>Location:</strong> Demand in the location influences the price significantly.</li>
-                <li><strong>Size:</strong> Larger homes typically have higher values.</li>
-                <li><strong>Type:</strong> Double-wide homes are more valuable than single-wide homes.</li>
-                <li><strong>Number of Rooms:</strong> More rooms often mean greater value.</li>
-                <li><strong>Manufacturer:</strong> Homes from premium manufacturers retain higher resale value.</li>
-            </ul>
-            <p>The calculator applies depreciation and other market factors to provide an estimated value tailored to your input.</p>
-        </div>
-    </main>
-    <script src="script.js"></script>
+        <form id="valueCalculatorForm">
+            <!-- Age of Mobile Home -->
+            <div class="form-group">
+                <label for="age">Age of Home (in years):</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <!-- Size of Mobile Home -->
+            <div class="form-group">
+                <label for="size">Size of Home (in square feet):</label>
+                <input type="number" id="size" name="size" required>
+            </div>
+
+            <!-- Condition of Home -->
+            <div class="form-group">
+                <label for="condition">Condition of Home:</label>
+                <select id="condition" name="condition" required>
+                    <option value="excellent">Excellent</option>
+                    <option value="good">Good</option>
+                    <option value="fair">Fair</option>
+                    <option value="poor">Poor</option>
+                </select>
+            </div>
+
+            <!-- Number of Rooms -->
+            <div class="form-group">
+                <label for="rooms">Number of Rooms:</label>
+                <input type="number" id="rooms" name="rooms" required>
+            </div>
+
+            <!-- Manufacturer -->
+            <div class="form-group">
+                <label for="manufacturer">Manufacturer's Name:</label>
+                <select id="manufacturer" name="manufacturer" required>
+                    <optgroup label="Premium Manufacturers">
+                        <option value="Clayton Homes (Premium)">Clayton Homes (Premium)</option>
+                        <option value="Palm Harbor Homes (Premium)">Palm Harbor Homes (Premium)</option>
+                        <option value="Golden West Homes (Premium)">Golden West Homes (Premium)</option>
+                        <option value="Champion Homes (Premium)">Champion Homes (Premium)</option>
+                        <option value="Silvercrest Homes (Premium)">Silvercrest Homes (Premium)</option>
+                        <option value="Skyline Homes (Premium)">Skyline Homes (Premium)</option>
+                        <option value="Cavco Homes (Premium)">Cavco Homes (Premium)</option>
+                    </optgroup>
+                    <optgroup label="Standard Manufacturers">
+                        <option value="Fleetwood Homes (Standard)">Fleetwood Homes (Standard)</option>
+                        <option value="Adventure Homes (Standard)">Adventure Homes (Standard)</option>
+                        <option value="Fairmont Homes (Standard)">Fairmont Homes (Standard)</option>
+                        <option value="Sunshine Homes (Standard)">Sunshine Homes (Standard)</option>
+                        <option value="Nashua Homes (Standard)">Nashua Homes (Standard)</option>
+                        <option value="Redman Homes (Standard)">Redman Homes (Standard)</option>
+                        <option value="Oak Creek Homes (Standard)">Oak Creek Homes (Standard)</option>
+                    </optgroup>
+                    <optgroup label="Budget Manufacturers">
+                        <option value="Legacy Housing (Budget)">Legacy Housing (Budget)</option>
+                        <option value="TRU Homes (Budget)">TRU Homes (Budget)</option>
+                        <option value="Hamilton Homebuilders (Budget)">Hamilton Homebuilders (Budget)</option>
+                        <option value="Southern Energy Homes (Budget)">Southern Energy Homes (Budget)</option>
+                        <option value="Jessup Housing (Budget)">Jessup Housing (Budget)</option>
+                        <option value="Deer Valley Homes (Budget)">Deer Valley Homes (Budget)</option>
+                        <option value="Champion Homes Budget Series (Budget)">Champion Homes Budget Series (Budget)</option>
+                    </optgroup>
+                    <optgroup label="Regional or Specialty Manufacturers">
+                        <option value="Kit Custom Homebuilders (Regional)">Kit Custom Homebuilders (Regional)</option>
+                        <option value="Karsten Homes (Regional)">Karsten Homes (Regional)</option>
+                        <option value="Jacobsen Homes (Regional)">Jacobsen Homes (Regional)</option>
+                        <option value="Oakwood Homes (Regional)">Oakwood Homes (Regional)</option>
+                    </optgroup>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="otherManufacturer" name="otherManufacturer" placeholder="Enter other manufacturer" style="display: none;">
+            </div>
+
+            <button type="submit">Calculate Value</button>
+        </form>
+
+        <section class="explanation">
+            <h2>Explanation of Factors</h2>
+            <p><strong>Age of Home</strong>: The age of the mobile home affects its depreciation, with older homes generally being worth less.</p>
+            <p><strong>Size of Home</strong>: Larger homes tend to have higher values due to more living space.</p>
+            <p><strong>Condition of Home</strong>: Homes in excellent or good condition will have a higher value than those in fair or poor condition.</p>
+            <p><strong>Number of Rooms</strong>: More rooms can increase the value of the home, as it provides more space for living.</p>
+            <p><strong>Manufacturer</strong>: Certain manufacturers are known for higher-quality homes, which can influence resale value. Premium brands tend to have higher value, while budget brands are typically worth less.</p>
+            <h2>Calculation Logic</h2>
+            <p>The value of a mobile home is estimated based on the above factors, including the home's age, size, condition, number of rooms, and the manufacturer's reputation. The final value is calculated by combining these factors, with weight adjustments based on each variable.</p>
+        </section>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
