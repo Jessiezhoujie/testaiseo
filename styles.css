@@ -1,89 +1,107 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f9f9f9;
-}
+// JavaScript for Used Mobile Home Value Calculator
+document.getElementById("calculateBtn").addEventListener("click", function () {
+    // Get input values
+    const ageInput = document.getElementById("age");
+    const conditionInput = document.getElementById("condition");
+    const locationInput = document.getElementById("location");
+    const sizeInput = document.getElementById("size");
+    const typeInput = document.getElementById("type");
+    const roomsInput = document.getElementById("rooms");
+    const manufacturerInput = document.getElementById("manufacturer");
 
-/* Header Styles */
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #0073e6;
-    color: white;
-}
+    const age = parseInt(ageInput.value);
+    const condition = parseFloat(conditionInput.value);
+    const location = parseFloat(locationInput.value);
+    const size = parseInt(sizeInput.value);
+    const type = parseFloat(typeInput.value);
+    const rooms = parseInt(roomsInput.value);
+    const manufacturer = manufacturerInput.value.trim().toLowerCase();
 
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
+    // Validation: Check for required fields
+    if (!age || !condition || !location || !size || !type || !rooms || !manufacturer) {
+        alert("All fields are required. Please fill out all inputs.");
+        return;
+    }
 
-/* Main Content Styles */
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    // Validation: Ensure valid input ranges
+    if (age < 0) {
+        alert("Age must be a positive number.");
+        ageInput.focus();
+        return;
+    }
+    if (size <= 0) {
+        alert("Size must be greater than zero.");
+        sizeInput.focus();
+        return;
+    }
+    if (rooms <= 0) {
+        alert("Number of rooms must be greater than zero.");
+        roomsInput.focus();
+        return;
+    }
 
-/* Section Styles */
-section {
-    margin-bottom: 20px;
-}
+    // Calculation Logic
 
-section h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #0073e6;
-}
+    // Base Value
+    let baseValue = 50000; // Default base value in USD
 
-section p {
-    font-size: 1em;
-    color: #555;
-}
+    // Adjust for Mobile Home Type
+    if (type === 1) {
+        baseValue *= 1; // Single-wide
+    } else if (type === 1.5) {
+        baseValue *= 1.5; // Double-wide
+    }
 
-/* Form Styles */
-form {
-    margin-bottom: 20px;
-}
+    // Adjust for Location
+    if (location === 1) {
+        baseValue *= 1; // Low-demand area
+    } else if (location === 1.5) {
+        baseValue *= 1.5; // Moderate-demand area
+    } else if (location === 2) {
+        baseValue *= 2; // High-demand area
+    }
 
-form label {
-    display: block;
-    font-weight: bold;
-    margin: 10px 0 5px;
-}
+    // Adjust for Condition
+    if (condition === 1) {
+        baseValue *= 0.8; // Poor
+    } else if (condition === 1.2) {
+        baseValue *= 1; // Fair
+    } else if (condition === 1.5) {
+        baseValue *= 1.2; // Good
+    } else if (condition === 2) {
+        baseValue *= 1.5; // Excellent
+    }
 
-form input,
-form select,
-form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
+    // Apply Depreciation for Age
+    const depreciationRate = 0.03; // 3% depreciation per year
+    const depreciationFactor = Math.max(0, 1 - age * depreciationRate);
+    baseValue *= depreciationFactor;
 
-form button {
-    background-color: #0073e6;
-    color: white;
-    cursor: pointer;
-    border: none;
-}
+    // Adjust for Size
+    const sizeFactor = size / 1000; // Assume 1,000 sqft is standard size
+    baseValue *= sizeFactor;
 
-form button:hover {
-    background-color: #005bb5;
-}
+    // Adjust for Number of Rooms
+    const roomFactor = rooms / 5; // Assume 5 rooms is standard
+    baseValue *= roomFactor;
 
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
+    // Adjust for Manufacturer
+    if (manufacturer === "premium") {
+        baseValue *= 1.3; // Premium brand increases value by 30%
+    } else if (manufacturer === "standard") {
+        baseValue *= 1; // Standard brand
+    } else if (manufacturer === "budget") {
+        baseValue *= 0.8; // Budget brand decreases value by 20%
+    } else {
+        alert("Manufacturer must be 'premium', 'standard', or 'budget'.");
+        manufacturerInput.focus();
+        return;
+    }
+
+    // Ensure final value is non-negative
+    baseValue = Math.max(0, baseValue);
+
+    // Display the Result
+    const valueOutput = document.getElementById("valueOutput");
+    valueOutput.textContent = `The estimated value of your mobile home is $${baseValue.toFixed(2)}`;
+});
