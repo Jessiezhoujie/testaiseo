@@ -1,5 +1,5 @@
 {
-  "Premium Manufacturers": [
+  "Premium": [
     {"name": "Clayton Homes", "value": "clayton"},
     {"name": "Palm Harbor Homes", "value": "palm_harbor"},
     {"name": "Golden West Homes", "value": "golden_west"},
@@ -10,7 +10,7 @@
     {"name": "Karsten Homes", "value": "karsten"},
     {"name": "Jacobsen Homes", "value": "jacobsen"}
   ],
-  "Standard Manufacturers": [
+  "Standard": [
     {"name": "Adventure Homes", "value": "adventure"},
     {"name": "Fairmont Homes", "value": "fairmont"},
     {"name": "Sunshine Homes", "value": "sunshine"},
@@ -20,7 +20,7 @@
     {"name": "Cavalier Homes", "value": "cavalier"},
     {"name": "Commodore Homes", "value": "commodore"}
   ],
-  "Budget Manufacturers": [
+  "Budget": [
     {"name": "Legacy Housing", "value": "legacy"},
     {"name": "TRU Homes", "value": "tru"},
     {"name": "Hamilton Homebuilders", "value": "hamilton"},
@@ -31,7 +31,7 @@
     {"name": "Clayton Homes (Budget Series)", "value": "clayton_budget"},
     {"name": "Cavco Homes (Budget Series)", "value": "cavco_budget"}
   ],
-  "Regional/Specialty Manufacturers": [
+  "Regional/Specialty": [
     {"name": "Kit Custom Homebuilders (West Coast)", "value": "kit"},
     {"name": "Karsten Homes (Southwest USA)", "value": "karsten_southwest"},
     {"name": "Jacobsen Homes (Florida)", "value": "jacobsen_florida"},
