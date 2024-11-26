@@ -1,59 +1,86 @@
-// Load the manufacturers list from the JSON file and populate the dropdown
-function loadManufacturers() {
-    fetch('manufacturers.json') // Path to the JSON file
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch manufacturers data from the external JSON file
+    fetch('manufacturers.json')
         .then(response => response.json())
         .then(data => {
-            const manufacturerSelect = document.getElementById('manufacturer');
-            
-            // Loop through categories (Premium, Standard, Budget, etc.)
-            for (const category in data) {
-                const optgroup = document.createElement('optgroup');
-                optgroup.label = category;
-
-                data[category].forEach(manufacturer => {
-                    const option = document.createElement('option');
-                    option.value = manufacturer.value;
-                    option.textContent = manufacturer.name + ` (${category})`;
-                    optgroup.appendChild(option);
-                });
-
-                manufacturerSelect.appendChild(optgroup);
-            }
+            populateManufacturers(data.manufacturers);
         })
-        .catch(error => console.error('Error loading manufacturers:', error));
+        .catch(error => {
+            console.error('Error fetching manufacturers:', error);
+        });
+});
+
+// Populate manufacturer dropdown list
+function populateManufacturers(manufacturers) {
+    const manufacturerSelect = document.getElementById('manufacturer');
+    
+    // Clear existing options (in case there are any default ones)
+    manufacturerSelect.innerHTML = '';
+
+    // Create and append manufacturer options
+    manufacturers.forEach(function(manufacturer) {
+        const option = document.createElement('option');
+        option.value = manufacturer.name;
+        option.textContent = `${manufacturer.name} (${manufacturer.classification})`;
+        manufacturerSelect.appendChild(option);
+    });
 }
 
-// Function to calculate the value of the mobile home
+// Calculation logic (same as before)
 function calculateHomeValue() {
-    const homeAge = parseInt(document.getElementById('home-age').value);
-    const homeSize = parseInt(document.getElementById('home-size').value);
-    const homeCondition = document.getElementById('home-condition').value;
-    const numRooms = parseInt(document.getElementById('num-rooms').value);
-    const homeType = document.getElementById('home-type').value;
-    const locationDemand = parseInt(document.getElementById('location-demand').value);
-    const manufacturer = document.getElementById('manufacturer').value;
+    let age = parseFloat(document.getElementById('age').value);
+    let size = parseFloat(document.getElementById('size').value);
+    let condition = document.getElementById('condition').value;
+    let numRooms = parseInt(document.getElementById('numRooms').value);
+    let homeType = document.getElementById('homeType').value;
+    let locationDemand = document.getElementById('locationDemand').value;
+    let manufacturer = document.getElementById('manufacturer').value;
 
-    let value = 50000; // Base value for a used mobile home
-
-    // Age of Home: Deduct value based on the age
-    if (homeAge <= 5) {
-        value *= 1.2; // New homes get a boost
-    } else if (homeAge > 20) {
-        value *= 0.8; // Older homes lose value
-    }
-
-    // Size of Home: Increase value based on size
-    value += homeSize * 15;
-
-    // Condition of Home: Adjust value based on condition
-    if (homeCondition === 'excellent') {
-        value *= 1.3;
-    } else if (homeCondition === 'good') {
-        value *= 1.1;
-    } else if (homeCondition === 'fair') {
-        value *= 0.9;
+    // Check if all fields are filled
+    if (!age || !size || !condition || !numRooms || !homeType || !locationDemand || !manufacturer) {
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('errorMessage').textContent = 'All fields are required!';
+        return;
     } else {
-        value *= 0.7;
+        document.getElementById('errorMessage').style.display = 'none';
     }
 
-    // Number of Rooms:
+    // Basic value calculation (example)
+    let baseValue = size * 50; // Example base value
+
+    // Adjust for condition
+    if (condition === 'Good') {
+        baseValue *= 1.2;
+    } else if (condition === 'Fair') {
+        baseValue *= 1.0;
+    } else if (condition === 'Poor') {
+        baseValue *= 0.8;
+    }
+
+    // Adjust for home type
+    if (homeType === 'Double Wide') {
+        baseValue *= 1.5;
+    }
+
+    // Adjust for number of rooms
+    baseValue += numRooms * 2000;
+
+    // Adjust for location demand
+    if (locationDemand === 'High') {
+        baseValue *= 1.3;
+    } else if (locationDemand === 'Medium') {
+        baseValue *= 1.1;
+    } else {
+        baseValue *= 0.9;
+    }
+
+    // Adjust for manufacturer
+    if (manufacturer === 'Clayton Homes') {
+        baseValue *= 1.4;
+    } else if (manufacturer === 'Palm Harbor Homes') {
+        baseValue *= 1.3;
+    }
+
+    // Display the result
+    document.getElementById('result').textContent = `Estimated Home Value: $${baseValue.toFixed(2)}`;
+}
