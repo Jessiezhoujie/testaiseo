@@ -1,41 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const manufacturerSelect = document.getElementById("manufacturer");
-    const otherManufacturerInput = document.getElementById("otherManufacturer");
-
-    manufacturerSelect.addEventListener("change", function () {
-        if (manufacturerSelect.value === "Other") {
-            otherManufacturerInput.style.display = "block";
-            otherManufacturerInput.setAttribute("required", "true");
-        } else {
-            otherManufacturerInput.style.display = "none";
-            otherManufacturerInput.removeAttribute("required");
-        }
-    });
-
-    document.getElementById("calculateBtn").addEventListener("click", function () {
-        const age = parseFloat(document.getElementById("age").value);
-        const condition = parseFloat(document.getElementById("condition").value);
-        const location = parseFloat(document.getElementById("location").value);
-        const size = parseFloat(document.getElementById("size").value);
-        const type = parseFloat(document.getElementById("type").value);
-        const rooms = parseInt(document.getElementById("rooms").value, 10);
-        const manufacturer = manufacturerSelect.value === "Other" 
-            ? otherManufacturerInput.value 
-            : manufacturerSelect.value;
-
-        if (!age || !condition || !location || !size || !type || !rooms || !manufacturer) {
-            alert("Please fill out all required fields.");
-            return;
-        }
-
-        const baseValue = size * type * 50; // Example calculation base value
-        const conditionFactor = baseValue * condition;
-        const locationFactor = conditionFactor * location;
-        const ageDepreciation = locationFactor - age * 200;
-        const roomBonus = rooms * 1000;
-
-        const finalValue = ageDepreciation + roomBonus;
-        document.getElementById("valueOutput").textContent = 
-            `The estimated value of your mobile home is: $${finalValue.toFixed(2)}`;
-    });
+document.getElementById('manufacturer').addEventListener('change', function () {
+    const otherInput = document.getElementById('otherManufacturer');
+    if (this.value === 'Other') {
+        otherInput.style.display = 'block';
+        otherInput.required = true;
+    } else {
+        otherInput.style.display = 'none';
+        otherInput.required = false;
+    }
 });
+
+document.getElementById('valueCalculatorForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting for demo purposes
+
+    // Example calculation logic - replace with actual logic
+    const age = parseInt(document.getElementById('age').value);
+    const size = parseInt(document.getElementById('size').value);
+    const condition = document.getElementById('condition').value;
+    const rooms = parseInt(document.getElementById('rooms').value);
+    const manufacturer = document.getElementById('manufacturer').value;
+
+    let value = 5000; // base value
+
+    // Apply modifiers based on age
+    if (age < 5) value += 5000; // Newer homes are worth more
+   
