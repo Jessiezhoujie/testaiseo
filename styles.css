@@ -1,162 +1,100 @@
-/* General Body Styles */
+/* General Layout */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f9;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #333;
 }
 
-/* Main Container */
 .container {
     width: 80%;
-    max-width: 1200px;
+    max-width: 1000px;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings */
+/* Heading and Result */
 h1 {
     text-align: center;
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #0056b3;
-}
-
-/* Form Styles */
-form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-}
-
-form label {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-form input[type="number"],
-form select,
-form textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    color: #333;
+    font-size: 2em;
     margin-bottom: 20px;
-    box-sizing: border-box;
 }
 
-form input[type="number"]:focus,
-form select:focus,
-form textarea:focus {
-    border-color: #0056b3;
-    outline: none;
-}
-
-/* Prominent Calculation Button */
-form input[type="submit"] {
-    background-color: #ff6f61; /* Eye-catching color */
-    color: white;
-    padding: 20px 30px; /* Increase size for prominence */
-    font-size: 20px; /* Bigger text for better visibility */
-    border: none;
-    border-radius: 8px; /* Rounded corners for a modern look */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
-    width: 100%;
+.result {
     margin-top: 20px;
+    padding: 15px;
+    background-color: #e0f7fa;
+    border: 1px solid #00796b;
+    color: #00796b;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    border-radius: 5px;
 }
 
-form input[type="submit"]:hover {
-    background-color: #e55a4e; /* Darken color on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-form input[type="submit"]:active {
-    background-color: #d44d43; /* Darker color when button is clicked */
-    transform: scale(1); /* Return to original size when clicked */
-}
-
-/* Form Section Styles */
-form .section {
-    margin-bottom: 30px;
-}
-
-/* Influencing Factors Title */
-h2 {
-    font-size: 24px;
+/* Form Elements */
+label {
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    display: block;
+    margin-top: 15px;
+    font-size: 1.1em;
 }
 
-/* Explanations Title */
-h3 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #555;
-    margin-top: 20px;
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
 }
 
-/* Paragraph Styles */
-p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #666;
-}
-
-/* Factor Description */
-.factor-description {
-    margin-top: 20px;
-    background-color: #f9f9f9;
+button {
+    width: 100%;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #00796b;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.factor-description p {
-    margin-bottom: 10px;
+button:hover {
+    background-color: #004d40;
 }
 
-/* Input Field Placeholder */
-input::placeholder,
-select::placeholder,
-textarea::placeholder {
-    color: #aaa;
-}
-
-/* Error Message Style */
+/* Error messages */
 .error-message {
     color: red;
-    font-size: 14px;
-    margin-top: -15px;
-    margin-bottom: 15px;
+    font-size: 0.9em;
+    margin-top: 5px;
 }
 
-/* Container for Factor Explanations */
-.factor-explanation {
-    padding: 20px;
-    margin-top: 30px;
-    background-color: #fafafa;
-    border-radius: 8px;
+/* Section Styling */
+.section {
+    margin-bottom: 20px;
 }
 
-.factor-explanation h3 {
-    margin-top: 0;
-}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
 
-.factor-explanation p {
-    margin-bottom: 10px;
+    h1 {
+        font-size: 1.8em;
+    }
+
+    button {
+        font-size: 1.1em;
+    }
 }
 
