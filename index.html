@@ -3,84 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Estimate the value of your used mobile home based on key factors such as location, age, condition, and more.">
     <title>Used Mobile Home Value Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Used Mobile Home Value Calculator</h1>
+    </header>
 
-<div class="container">
-    <h1>Used Mobile Home Value Calculator</h1>
+    <main>
+        <section class="calculator">
+            <h2>Input Information</h2>
+            <form id="calculatorForm" onsubmit="event.preventDefault(); calculateHomeValue();">
+                <div class="form-group">
+                    <label for="age">Age of Home (years):</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size of Home (sq ft):</label>
+                    <input type="number" id="size" name="size" required>
+                </div>
+                <div class="form-group">
+                    <label for="condition">Condition of Home:</label>
+                    <select id="condition" name="condition" required>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numRooms">Number of Rooms:</label>
+                    <input type="number" id="numRooms" name="numRooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="homeType">Type of Mobile Home:</label>
+                    <select id="homeType" name="homeType" required>
+                        <option value="Single Wide">Single Wide</option>
+                        <option value="Double Wide">Double Wide</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="locationDemand">Location Demand Level:</label>
+                    <select id="locationDemand" name="locationDemand" required>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer:</label>
+                    <select id="manufacturer" name="manufacturer" required>
+                        <!-- Options will be filled by JavaScript -->
+                    </select>
+                </div>
+                <button type="submit" class="calculate-btn">Calculate Value</button>
+            </form>
+        </section>
 
-    <form id="calculator-form">
-        <!-- Age of Home -->
-        <div class="section">
-            <label for="home-age">Age of Home (in years)</label>
-            <input type="number" id="home-age" name="home-age" required min="1" max="100">
-            <p class="error-message" id="home-age-error"></p>
-        </div>
+        <section class="result">
+            <h2>Estimated Home Value</h2>
+            <div id="errorMessage" style="display:none; color: red; font-size: 1.1em; margin-top: 10px;"></div>
+            <div id="result" class="result-value"></div>
+        </section>
 
-        <!-- Size of Home -->
-        <div class="section">
-            <label for="home-size">Size of Home (in square feet)</label>
-            <input type="number" id="home-size" name="home-size" required min="100" max="5000">
-            <p class="error-message" id="home-size-error"></p>
-        </div>
+        <section class="seo-content">
+            <h2>Influencing Factors for Mobile Home Value</h2>
+            <!-- Explanation of factors (same as before) -->
+            <p>The value of a used mobile home is affected by several key factors. These include the home’s age, size, condition, number of rooms, the type of mobile home, the location demand level, and the manufacturer. Each factor plays a crucial role in determining the home's value.</p>
+            
+            <h3>Age of Home</h3>
+            <p>The age of the mobile home significantly affects its value. Typically, the older the home, the lower its resale value due to depreciation. Homes older than 20 years often face substantial reductions in value.</p>
 
-        <!-- Condition of Home -->
-        <div class="section">
-            <label for="home-condition">Condition of Home</label>
-            <select id="home-condition" name="home-condition" required>
-                <option value="excellent">Excellent</option>
-                <option value="good">Good</option>
-                <option value="fair">Fair</option>
-                <option value="poor">Poor</option>
-            </select>
-            <p class="error-message" id="home-condition-error"></p>
-        </div>
+            <h3>Size of Home</h3>
+            <p>Larger mobile homes are generally valued higher than smaller ones due to the extra living space they provide. The square footage is directly related to the cost and resale price.</p>
 
-        <!-- Number of Rooms -->
-        <div class="section">
-            <label for="num-rooms">Number of Rooms</label>
-            <input type="number" id="num-rooms" name="num-rooms" required min="1" max="10">
-            <p class="error-message" id="num-rooms-error"></p>
-        </div>
+            <h3>Condition of Home</h3>
+            <p>The condition of the home is critical. Homes that are in good condition, with minimal repairs needed, will retain more value. Fair or poor conditions may result in a significant decrease in value due to repair costs.</p>
 
-        <!-- Type of Mobile Home -->
-        <div class="section">
-            <label for="home-type">Home Type</label>
-            <select id="home-type" name="home-type" required>
-                <option value="single-wide">Single-Wide</option>
-                <option value="double-wide">Double-Wide</option>
-            </select>
-            <p class="error-message" id="home-type-error"></p>
-        </div>
+            <h3>Number of Rooms</h3>
+            <p>The number of rooms adds to the livability and attractiveness of a mobile home. More rooms typically result in a higher home value, especially for larger families or those seeking extra space.</p>
 
-        <!-- Location Demand Level -->
-        <div class="section">
-            <label for="location-demand">Location Demand Level</label>
-            <input type="number" id="location-demand" name="location-demand" required min="1" max="10">
-            <p class="error-message" id="location-demand-error"></p>
-        </div>
+            <h3>Type of Mobile Home</h3>
+            <p>Mobile homes come in various types such as single-wide or double-wide. Double-wide homes generally offer more space and thus tend to be more valuable than single-wide units.</p>
 
-        <!-- Manufacturer Selection -->
-        <div class="section">
-            <label for="manufacturer">Manufacturer</label>
-            <select id="manufacturer" name="manufacturer" required>
-                <option value="other">Other (Please specify)</option>
-            </select>
-            <p class="error-message" id="manufacturer-error"></p>
-        </div>
+            <h3>Location Demand Level</h3>
+            <p>The demand for mobile homes in specific areas greatly influences the home’s value. Areas with higher demand (urban centers or growing regions) tend to increase the home’s value due to higher interest from potential buyers.</p>
 
-        <div class="section">
-            <button type="button" id="calculate-btn">Calculate</button>
-        </div>
-    </form>
+            <h3>Manufacturer</h3>
+            <p>The manufacturer’s reputation and the quality of construction affect the resale value of a mobile home. Homes from premium manufacturers like Clayton Homes are generally worth more than those from budget manufacturers.</p>
+        </section>
 
-    <div id="result" class="result"></div>
-</div>
+        <section class="seo-content">
+            <h2>How the Mobile Home Value is Calculated</h2>
+            <!-- Calculation explanation (same as before) -->
+            <p>To calculate the estimated value of a used mobile home, the following factors are taken into consideration:</p>
 
-<script src="script.js"></script>
+            <h3>Calculation Steps</h3>
+            <p>The base value of a mobile home is adjusted according to the following factors:</p>
+            <ul>
+                <li><strong>Age of the Home</strong>: Older homes have a lower value due to depreciation.</li>
+                <li><strong>Size of the Home</strong>: Larger homes have a higher value due to more space.</li>
+                <li><strong>Condition</strong>: Homes in good condition are valued higher than those requiring significant repairs.</li>
+                <li><strong>Number of Rooms</strong>: More rooms increase the value due to higher livability.</li>
+                <li><strong>Type of Mobile Home</strong>: Double-wide homes generally have a higher value than single-wide homes.</li>
+                <li><strong>Location Demand Level</strong>: Higher demand in the location increases the home’s value.</li>
+                <li><strong>Manufacturer</strong>: Homes from premium manufacturers like Clayton Homes are valued higher.</li>
+            </ul>
 
+            <h3>Final Calculation Formula</h3>
+            <p>The final value is calculated by multiplying the base value with the factors for age, size, condition, rooms, location, and manufacturer. The value is adjusted for each influencing factor, and a final estimated value is displayed for the user.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
